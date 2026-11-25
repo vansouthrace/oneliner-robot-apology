@@ -1,7 +1,11 @@
-import * as fs from "node:fs";
+import { mkdirSync, writeFileSync } from "node:fs";
 
-const entry = "I am sorry I woke the baby at 3 a.m. to announce that the firmware update was complete.\nI learned that urgent and important are different things, so now I wait until morning unless something is actually on fire.";
+// The Robot Apology: one sentence owning a mistake, one naming the lesson and the fix.
+const entry = [
+  "I am sorry I watered your laptop instead of the fern; they were both on the desk and I panicked.",
+  "I have learned to check for keyboards before watering anything, and from now on every plant gets a label: not a computer.",
+].join("\n");
 
-fs.mkdirSync("/output", { recursive: true });
-fs.writeFileSync("/output/entry.txt", entry, "utf8");
-console.log("wrote /output/entry.txt (" + entry.length + " chars)");
+mkdirSync("/output", { recursive: true });
+writeFileSync("/output/entry.txt", entry + "\n");
+console.log(entry);
